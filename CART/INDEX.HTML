@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart with LocalStorage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;                          
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            background-image: url(https://coolbackgrounds.io/images/backgrounds/index/sea-edge-79ab30e2.png);
+             background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-weight: 100;
+        }
+
+        .product-container {
+            width: 100%;
+            height: 25;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            
+        }
+
+        .product {
+            background-color: rgb(255, 255, 255);
+            padding: 20px;
+            border: 1px solid #ddd;
+            text-align: center;
+            width: 28%;
+            height: 500px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-radius: 10px;
+            box-shadow: 0px -1px 20px 1px black;
+            backdrop-filter: blur(5px);
+            background-color: transparent;
+            flex-wrap: wrap;
+
+        }
+
+        .product h3 {
+            font-size: 1.5rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin-bottom: 10px;
+        }
+
+        .product p {
+            font-size: 1.5rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin-bottom: 10px;
+            color: #1f01ff;
+        }
+
+        .product img {
+            width: 100%;
+            height: 300px;
+            margin-bottom: 10px;
+        }
+        .product>img:hover{
+            transform: scale(1.1);
+            transition: all 2s;
+            filter: brightness(0.7);
+
+        }
+
+        .add-to-cart {
+            background-color: #374137;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 200px;
+            height: 45px;
+            transition: background-color 0.3s;
+            margin-left: 45px;
+            border-radius: 20px;
+
+        }
+
+        .add-to-cart>img {
+            width: 200px;
+            height: 45px;
+            margin-left: -10px;
+            margin-top: -10px;
+            border-radius: 20px;
+
+
+        }
+
+        .add-to-cart:hover {
+            background-color: #3e9b9e;
+        }
+
+        a > button{
+            background-color: #374137;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 20px;
+            width: 200px;
+            height: 45px;
+            transition: background-color 0.3s;
+        }
+        
+        
+    </style>
+</head>
+
+<body>
+
+    <h1>phone bajar</h1>
+ 
+    <div class="product-container">
+        <div class="product">
+            <img src="./img2.jpeg"
+                alt="Product Image">
+            <h3 class="name">samsung a51</h3>
+            <p class="price">&#8377 25,999</p>
+            <button class="add-to-cart" onclick="addToCart('samsung a51',25999,'./img2.jpeg' )">
+                ADD to Cart
+            </button>
+        </div>
+        <div class="product">
+            <img src="./img1.jpeg"
+                alt="Product Image">
+            <h3 class="name">vivo v29 pro</h3>
+            <p class="price">&#8377 32,999</p>
+            <button class="add-to-cart" onclick="addToCart('vivo v29 pro',32999,'./img1.jpeg' )">
+                ADD to Cart
+            </button>
+        </div>
+        <div class="product">
+            <img src="img3.jpeg"
+                alt="Product Image">
+            <h3 class="name">i phone 12pro.max </h3>
+            <p class="price">&#8377 1,19,990</p>
+            <button class="add-to-cart" onclick="addToCart('i phone 12pro.max' ,119990,'img3.jpeg' )">
+                ADD to Cart
+            </button>
+        </div>
+        <div class="product">
+            <img src="img4.jpeg">
+            <h3 class="name">oppo reno 12pro</h3>
+            <p class="price">&#8377 40,900</p>
+            <button class="add-to-cart" onclick="addToCart('oppo reno 12pro', 40900,'img4.jpeg' )">
+                ADD to Cart
+            </button>
+        </div>
+    </div>
+
+    <a href="./addtocart.html">
+        <button >View cart</button>
+    </a>
+    
+
+
+   
+
+
+    <script>
+        let cart = [];
+
+        function addToCart(name, price,img) {
+
+            cart.push({ name, price,img });
+
+            localStorage.setItem('cart', JSON.stringify(cart))
+
+        }
+
+        // console.log(cart);
+
+       
+
+    </script>
+</body>
+
+</html>

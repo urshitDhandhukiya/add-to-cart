@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            width: 100%;
+            height: 350px;
+            /* border:  1px solid black; */
+            text-align: center;
+        }
+
+        h1{
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 3rem;
+        }
+
+        #history {
+            margin: 10px auto;
+            width: 300px;
+            text-align: center;
+            height: 325px;
+            /* border: 1px solid black; */
+            /* background-color: rgb(230, 222, 222); */
+        }
+
+        #history>p {
+            color: #ff0101;
+        }
+
+        #history>p>span {
+            color: #1f01ff;
+        }
+
+        #container>button {
+            background-color: #374137;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 200px;
+            height: 45px;
+            transition: background-color 0.3s;
+            margin-left: 15px;
+            border-radius: 20px;
+        }
+
+        .product {
+            /* background-color: rgb(255, 255, 255); */
+            padding: 20px;
+            border: 1px solid #ddd;
+            text-align: center;
+            width: 100%;
+            height: 500px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-radius: 10px;
+            box-shadow: 0px -1px 20px 1px black;
+            backdrop-filter: blur(5px);
+            background-color: transparent;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .product h3 {
+            font-size: 1.5rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin-bottom: 10px;
+        }
+
+        .product p {
+            font-size: 1.5rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin-bottom: 10px;
+            color: #1f01ff;
+        }
+
+        .product img {
+            width: 100%;
+            height: 300px;
+            margin-bottom: 10px;
+        }
+        .product>img:hover{
+            transform: scale(1.1);
+            transition: all 2s;
+            filter: brightness(0.7);
+
+        }
+
+        #del{
+            position: fixed;
+            top: 20px;
+            left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h1>This Your Cart</h1>
+        <div id="history">
+
+        </div>
+        <button onclick="del()" id="del">Delete All</button>
+    </div>
+
+
+    <script>
+
+        let history = document.getElementById('history');
+
+        let cartData = localStorage.getItem('cart');
+
+        console.log(cartData);
+
+        let data = JSON.parse(cartData);
+
+        console.log(data)
+
+        data.forEach(val => {
+
+            history.innerHTML += `  <div class="product">
+            <img src="${val.img}">
+            <h3 class="name">${val.name}</h3>
+            <p class="price">&#8377 ${val.price}</p>`
+
+        });
+
+        function del() {
+
+            localStorage.clear()
+
+            window.location.reload();
+        }
+    </script>
+</body>
+
+</html>
